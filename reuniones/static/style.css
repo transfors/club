@@ -1,0 +1,115 @@
+body h2 {
+    margin: 20px;
+}
+.titulo_calendario {
+    font-size: 24px;
+    font-weight: bold;
+    color: #32383e;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mi_calendario {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    background: rgb(128, 209, 247);
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.mi_calendario table {
+    width: 100%;
+}
+
+.mi_calendario table th,
+.mi_calendario table td {
+    padding: 5px;
+    text-align: center;
+}
+
+.mi_calendario table td {
+    cursor: pointer;
+}
+
+.mi_calendario .today {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.mi_calendario .selected {
+    background-color: #ffc107;
+    font-weight: bold;
+}
+
+/* footer */
+
+footer {
+    background-color: #8ad4eb;
+    margin-top: 20px;
+    padding: 20px 0;
+    top: 30px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* contenedor calendario */
+
+.container-calendario {
+    width: 300px;
+    margin-right: 20px;
+}
+
+/* título calendario */
+
+.calendar-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* calendario */
+
+.calendario {
+    border: 1px solid #1083c6;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* días calendario */
+
+.calendario table {
+    width: 100%;
+}
+
+.calendario table th,
+.calendario table td {
+    padding: 5px;
+    text-align: center;
+}
+
+/* días del mes */
+
+.calendario table td {
+    cursor: pointer;
+}
+
+.footer-info {
+    margin-top: 10px;
+    flex-basis: 300px;
+    text-align: center;
+}
+
+.footer-info p {
+    margin-bottom: 5px;
+}

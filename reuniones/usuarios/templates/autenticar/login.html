@@ -1,0 +1,73 @@
+{% extends 'archivos/base_reunion.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+</head>
+
+<style>
+  input[type=text],
+  input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background:rgb(184, 211, 244);
+  }
+
+  .boton {
+    background-color: #0722f1fe;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  .container {
+    width: 100%;
+    padding: 16px 16px;
+  }
+
+  .modal-content {
+    background-color: #eef4fb;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 10px;
+  }
+</style>
+
+<body>
+  <h1 class="text-center">Login</h1>
+  <form class="modal-content animate" action="" method="POST">
+    {% csrf_token %}    
+    <div class="container">
+      <label for="username"><b>Usuario</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+      <button class= "boton" type="submit">Login</button>
+    </div>
+  </form>
+
+</body>
+
+</html>
+
+{% endblock %}

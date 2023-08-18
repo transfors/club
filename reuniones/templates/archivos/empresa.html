@@ -1,0 +1,105 @@
+{% extends 'archivos/base_reunion.html' %}
+{% block tabla %}
+
+
+<style>
+  h1 {
+    font-size: 30px;
+    color: rgb(8, 8, 29);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  td,
+  td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid gray;
+  }
+
+  th {
+    background-color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: white;
+  }
+
+  a {
+    color: blue;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: urderline;
+  }
+</style>
+
+{% endblock %}
+{% block content %}
+
+
+<h1>Listado de Empresas</h1>
+<br />
+<center>
+  <table class="table table-striped table-hover table-bordered">
+    <!-- in listar_empresa es la clave del 
+    diccionario en views.py -->
+    {% for empresa in listar_empresa %}
+
+    <tr>
+      <td class="text-left">
+        <!-- vamos a mostrar la empresa por su id
+        acá va empresa.id (NO CON _)-->
+        <a href="{% url 'mostrar_empresa' empresa.id %}">{{empresa}}</a><br />
+      </td>
+      <td class="text-center">
+        <a href="{% url 'actualizar_empresa' empresa.id %}" class="btn btn-outline-success btn-sm mx-2 border border-2 border-success">Actualizar</a>
+
+      </td>
+      <td class="text-center">
+        <a href="{% url 'borrar_empresa' empresa.id %}" class="btn btn-outline-danger btn-sm mx-2 border border-2 border-danger">Eliminar Empresa</a>
+
+      </td>
+    </tr>
+
+    {% endfor %}
+
+  </table>
+</center>
+<!-- <br>
+{{empresas}}
+<br>
+Anterior: {{ empresas.has_previous }} <br>
+Siguiente: {{ empresas.has_next }} <br>
+Pagina actual: {{ empresas.number }} <br>
+Número de empresas: {{ empresas.paginator.num_pages }} -->
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% if empresas.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page=1">Actual</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ empresas.previous_page_number }}">Anterior</a></li>
+    {% endif %}
+
+    {% for j in num_page %}
+    <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+    {% endfor %}
+
+    {% if empresas.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ empresas.next_page_number }}">Siguiente</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ empresas.paginator.num_pages }}">Final</a></li>
+    {% endif %}
+
+    
+  </ul>
+</nav>
+
+
+{% endblock %}

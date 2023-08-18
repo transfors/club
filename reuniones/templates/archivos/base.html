@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  
+</head>
+<body>
+
+    {% include 'archivos/menu.html' %}
+
+    <h2 class="titulo_calendario">Hola!!! {{ mi_nombre }} la Hora actual es {{ hora_actual }} </h2>
+
+    <h2 class="titulo_calendario">Calendario</h2>
+    <div class="mi_calendario">
+        {{ calendario|safe }}
+    </div> 
+    <footer>
+        <div class="container">
+            <div class="container-calendario">
+                <h2 class="calendar-title">Año Actual</h2>
+                <div class="calendario">
+                    Copyright © {{ año_actual }} 
+                </div>
+            </div>
+            <div class="footer-info">
+                <p>Derechos de autor © 2023 - Mi Sitio Web</p>
+                <p>Contacto: info@example.com</p>
+            </div>
+        </div>
+    
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

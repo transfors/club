@@ -1,0 +1,12 @@
+{% extends 'archivos/base_reunion.html' %}
+{% block content %}
+
+<h1>Actualizar Reunión</h1>
+<form action="" method="POST">
+{% csrf_token %}
+{{ formulario_reunion.as_p }}
+<input type="submit" value="Actualizar" class="btn btn-primary">
+
+</form>
+
+{% endblock %} 

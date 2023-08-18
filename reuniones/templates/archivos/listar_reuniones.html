@@ -1,0 +1,60 @@
+{% extends 'archivos/base_reunion.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reuniones</title>
+</head>
+
+<body>
+    {% block content %}
+    <h1 class="m-2">Reuniones</h1>
+    
+
+    <ul class="cards" style="
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+      ">
+        {% for reunion in listar_reunion %}
+        <li class="card" style="
+          width: 300px;
+          background-color: rgb(153, 216, 242);
+          border-radius: 10px;
+          padding: 10px;
+          margin: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.2s ease-in-out;
+          cursor: pointer;
+        ">
+            <strong class="mx-3">{{ reunion }}</strong>
+            <ul>
+                <li style="color: rgb(3, 72, 146)">{{ reunion.fecha_reunion }}</li>
+                <li class="fw-bolder" style="color: rgb(47, 42, 190)">Empresa: {{ reunion.empresa }}</li>
+                <li>Organizador: {{ reunion.presentador }}</li>
+                <li>Descripción: {{ reunion.descripcion }}</li>
+                <li>Asistentes:
+                    <ul class="asistentes" style="list-style: none; padding: 0; margin: 0;">
+                        {% for user in reunion.asistentes.all %}
+                        <li>{{ user }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            <div class="card-footer text-muted d-flex justify-content-between">
+                <a href="{% url 'actualizar_reunion' reunion.id %}" class="btn btn-success btn-sm">Actualizar</a>
+
+                <a href="{% url 'borrar_reunion' reunion.id %}" class="btn btn-danger btn-sm ">Borrar Reunión</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+</body>
+
+</html>

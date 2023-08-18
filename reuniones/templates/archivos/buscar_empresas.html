@@ -1,0 +1,18 @@
+{% extends 'archivos/base_reunion.html' %}
+{% block content %}
+
+{% if buscar %}
+<h1>Buscar Empresas</h1>
+<br>
+<!-- empresas es la clave del diccionario -->
+{% for empresa in empresas %}
+    <a href="{% url 'mostrar_empresa' empresa.id %}">{{empresa}}</a>
+{% endfor %}
+
+{% else %}
+<h1>Este campo no puede ir vacío</h1>
+{% endif %}
+
+
+
+{% endblock %}

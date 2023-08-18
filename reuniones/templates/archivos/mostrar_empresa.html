@@ -1,0 +1,22 @@
+{% extends 'archivos/base_reunion.html' %}
+{% block content %}
+
+<center>
+    <div class="card">       
+        <div class="card-header fs-5 fw-semibold text-primary">LA EMPRESA</div>
+        <div class="card-body">
+            <h5 class="card-title">{{ empresa }}</h5>
+            <p class="card-text">
+            <ul class="list-unstyled">
+                <li>Dirección: {{ empresa.direccion }}</li>
+                <li>Código Postal: {{ empresa.codigo_postal }}</li>
+                <li>Teléfono: {{ empresa.telefono }}</li>
+                <li>Página Web: <a href="{{ empresa.pagina_web }}">{{ empresa.pagina_web }}</a></li>
+                <li>Email: {{ empresa.email }}</li>
+            </ul>
+            </p>
+        </div>  
+    </div>
+</center>
+
+{% endblock %}
