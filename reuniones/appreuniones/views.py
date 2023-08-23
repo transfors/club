@@ -143,6 +143,7 @@ def listar_empresa(request):
     paginar = Paginator(Empresa.objects.all(), 2)
     page = request.GET.get('page')
     empresas = paginar.get_page(page)
+    # escribo la letra "a" para decirle que vamos a agregar
     num_page = "a" * empresas.paginator.num_pages
     
     # empresa.html nombre de mi plantilla

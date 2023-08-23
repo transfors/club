@@ -78,12 +78,13 @@
 <br>
 Anterior: {{ empresas.has_previous }} <br>
 Siguiente: {{ empresas.has_next }} <br>
-Pagina actual: {{ empresas.number }} <br>
+Página actual: {{ empresas.number }} <br>
 Número de empresas: {{ empresas.paginator.num_pages }} -->
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     {% if empresas.has_previous %}
+    <!-- page=1 (page es nuestra variable) -->
     <li class="page-item"><a class="page-link" href="?page=1">Actual</a></li>
     <li class="page-item"><a class="page-link" href="?page={{ empresas.previous_page_number }}">Anterior</a></li>
     {% endif %}
@@ -93,7 +94,7 @@ Número de empresas: {{ empresas.paginator.num_pages }} -->
     {% endfor %}
 
     {% if empresas.has_next %}
-    <li class="page-item"><a class="page-link" href="?page={{ empresas.next_page_number }}">Siguiente</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ empresas.next_pages_number }}">Siguiente</a></li>
     <li class="page-item"><a class="page-link" href="?page={{ empresas.paginator.num_pages }}">Final</a></li>
     {% endif %}
 
