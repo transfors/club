@@ -1,12 +1,28 @@
 {% extends 'archivos/base_reunion.html' %}
 {% block content %}
 
+{% if user.is_authenticated %}
+{% if user == reunion.presentador %}
+
 <h1>Actualizar Reunión</h1>
 <form action="" method="POST">
-{% csrf_token %}
-{{ formulario_reunion.as_p }}
-<input type="submit" value="Actualizar" class="btn btn-primary">
+  {% csrf_token %}
+  {{ formulario_reunion.as_p }}
+  <input type="submit" value="Actualizar" class="btn btn-primary">
+
+  {% else %}
+  <h2>Acceso Denegado</h2>
+  <p>Solo el presentador de la reunión puede acceder a ella</p>
+  Usuario logueado: {{ user }}
+  <br>
+  Responsable: {{ reunion.presentador }}
+  {% endif %}
+
+  {% else %}
+  <h1>Primero debes loguearte!!!</h1>
+  <a href="{% url 'login' %}">Login</a>
+  {% endif %}
 
 </form>
 
-{% endblock %} 
+{% endblock %}

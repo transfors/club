@@ -1,49 +1,69 @@
 <nav class="navbar navbar-expand-lg bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand fst-normal" href="{% url 'index' %}" style="color: rgb(9, 137, 250);">Codelatin</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'index' '2023' 'December' %}" style="color: white;">Diciembre</a>
-          </li>
+  <div class="container-fluid">
+    <a class="navbar-brand fst-normal" href="{% url 'index' %}" style="color: rgb(9, 137, 250);">Codelatin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' '2023' 'December' %}" style="color: white;">Diciembre</a>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'listar_reuniones' %}" style="color: white;">Reuniones</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listar_reuniones' %}" style="color: white;">Reuniones</a>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'agregar_empresa' %}" style="color: white;">Agregar Empresa</a>
-          </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'agregar_empresa' %}" style="color: white;">Agregar Empresa</a>
+        </li>
+        {% endif %}
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'csv_empresa' %}" style="color: white;">CSV Empresas</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'csv_empresa' %}" style="color: white;">CSV Empresas</a>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'pdf_empresa' %}" style="color: white;">PDF Empresas</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'pdf_empresa' %}" style="color: white;">PDF Empresas</a>
+        </li>
 
-          <li class="nav-item">
-            <!-- listar_empresa es el nombre de la función en views.py -->
-            <a class="nav-link" href="{% url 'listar_empresa' %}" style="color: white;">Empresas</a>
-          </li>
+        <li class="nav-item">
+          <!-- listar_empresa es el nombre de la función en views.py -->
+          <a class="nav-link" href="{% url 'listar_empresa' %}" style="color: white;">Empresas</a>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'agregar_reunion' %}" style="color: white;">Agregar Reunión</a>
-          </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'agregar_reunion' %}" style="color: white;">Agregar Reunión</a>
+        </li>
+        {% endif %}
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}" style="color: white;">Login</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search" action="{% url 'buscar_empresas' %}" method="POST">
-          {% csrf_token %}
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="buscar">
-          <button class="btn btn-outline-primary" type="submit">Buscar</button>
-        </form>
-      </div>
+        {% if user.is_authenticated %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}" style="color: white;">Salir</a>
+        </li>
+
+        {% else %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}" style="color: white;">Ingresar</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register_user' %}" style="color: white;">Registrarme</a>
+        </li>
+        {% endif %}
+
+      </ul>
+
+      <form class="d-flex" role="search" action="{% url 'buscar_empresas' %}" method="POST">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="buscar">
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+      </form>
     </div>
-  </nav>
+  </div>
+</nav>

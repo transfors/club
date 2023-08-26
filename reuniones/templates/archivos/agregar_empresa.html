@@ -48,31 +48,42 @@
   </style>
 
   {% endblock %}
-
 </head>
 
 <body>
   {% block content %}
-
+  
   <center>
+    {% if user.is_authenticated %}
     <h1>Agregar Empresa</h1>
     <br /><br />
 
     {% if enviado %}
-    <h1 class="fade-in">La empresa se ha registrado con exito!!!</h1>
+    <h1 class="fade-in">La empresa se ha registrado con éxito!!!</h1>
 
     {% else %}
 
     <form action="" method="POST">
-      {% csrf_token %}
+      {% csrf_token %} 
       {{ formulario.as_p }}
       <input type="submit" value="Enviar" class="btn btn-primary" />
     </form>
 
     {% endif %}
+
+    <br />
+    <br />
+
+    {% else %}
+  <h1>Primero debes loguearte!!!</h1>
+  <a href="{% url 'login' %}">Login</a>
+
+  {% endif %}
+
   </center>
 
   {% endblock %}
+
 </body>
 
 </html>

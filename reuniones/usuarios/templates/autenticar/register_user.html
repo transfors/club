@@ -1,0 +1,31 @@
+{% extends 'archivos/base_reunion.html' %}
+
+{% block content %}
+
+
+{% if formulario.errors %}
+<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+    Ha Ocurrido un error!!!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="shadow p-4 mb-5 bg-body rounded">
+
+<h1 class="text-center">Registrarme</h1>
+<br />
+
+<form action="{% url 'register_user' %}" method="POST" class="registro m-5">
+
+    {% csrf_token %}
+    <!-- nos permite que la información que
+    pasemos por el formulario llegue a 
+    nuestra base de datos -->
+    {{formulario.as_p}}
+    <br>
+    <input type="submit" value="Registrarme" class="btn btn-primary">
+
+</form>
+<br />
+</div>
+{% endblock %}

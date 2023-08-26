@@ -11,8 +11,9 @@
 
 <body>
     {% block content %}
+
     <h1 class="m-2">Reuniones</h1>
-    
+
 
     <ul class="cards" style="
         list-style: none;
@@ -44,16 +45,25 @@
                         <li>{{ user }}</li>
                         {% endfor %}
                     </ul>
-                </li>
+                </li>           
             </ul>
+
+            {% if user.is_authenticated %}
+            {% if user == reunion.presentador %}
+
             <div class="card-footer text-muted d-flex justify-content-between">
                 <a href="{% url 'actualizar_reunion' reunion.id %}" class="btn btn-success btn-sm">Actualizar</a>
 
-                <a href="{% url 'borrar_reunion' reunion.id %}" class="btn btn-danger btn-sm ">Borrar Reunión</a>
+                <a href="{% url 'borrar_reunion' reunion.id %}" class="btn btn-danger btn-sm ">Eliminar</a>
             </div>
+            {% endif %}
+            {% endif %}
+
         </li>
+       
         {% endfor %}
     </ul>
+
     {% endblock %}
 </body>
 

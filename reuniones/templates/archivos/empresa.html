@@ -54,19 +54,26 @@
     {% for empresa in listar_empresa %}
 
     <tr>
+
       <td class="text-left">
         <!-- vamos a mostrar la empresa por su id
         acá va empresa.id (NO CON _)-->
         <a href="{% url 'mostrar_empresa' empresa.id %}">{{empresa}}</a><br />
       </td>
+      {% if user.is_authenticated %}
+
       <td class="text-center">
-        <a href="{% url 'actualizar_empresa' empresa.id %}" class="btn btn-outline-success btn-sm mx-2 border border-2 border-success">Actualizar</a>
+        <a href="{% url 'actualizar_empresa' empresa.id %}"
+          class="btn btn-outline-success btn-sm mx-2 border border-2 border-success">Actualizar</a>
 
       </td>
+
       <td class="text-center">
-        <a href="{% url 'borrar_empresa' empresa.id %}" class="btn btn-outline-danger btn-sm mx-2 border border-2 border-danger">Eliminar Empresa</a>
+        <a href="{% url 'borrar_empresa' empresa.id %}"
+          class="btn btn-outline-danger btn-sm mx-2 border border-2 border-danger">Eliminar Empresa</a>
 
       </td>
+      {% endif %}
     </tr>
 
     {% endfor %}
@@ -82,10 +89,10 @@ Página actual: {{ empresas.number }} <br>
 Número de empresas: {{ empresas.paginator.num_pages }} -->
 
 <nav aria-label="Page navigation example">
-  <ul class="pagination">
+  <ul class="pagination justify-content-center">
     {% if empresas.has_previous %}
     <!-- page=1 (page es nuestra variable) -->
-    <li class="page-item"><a class="page-link" href="?page=1">Actual</a></li>
+    <li class="page-item"><a class="page-link" href="?page=1">Primera</a></li>
     <li class="page-item"><a class="page-link" href="?page={{ empresas.previous_page_number }}">Anterior</a></li>
     {% endif %}
 
@@ -95,10 +102,9 @@ Número de empresas: {{ empresas.paginator.num_pages }} -->
 
     {% if empresas.has_next %}
     <li class="page-item"><a class="page-link" href="?page={{ empresas.next_pages_number }}">Siguiente</a></li>
-    <li class="page-item"><a class="page-link" href="?page={{ empresas.paginator.num_pages }}">Final</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ empresas.paginator.num_pages }}">Ultima</a></li>
     {% endif %}
 
-    
   </ul>
 </nav>
 
